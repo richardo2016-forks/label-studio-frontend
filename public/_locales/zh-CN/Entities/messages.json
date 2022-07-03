@@ -1,0 +1,11 @@
+{
+  "Regions": {
+    "message": "区域"
+  },
+  "Labels": {
+    "message": "标签"
+  },
+  "sorted_by": {
+    "message": "按 {{ order }} 排序"
+  }
+}

@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import { CurrentEntity } from "../CurrentEntity/CurrentEntity";
 import Entities from "../Entities/Entities";
 import Entity from "../Entity/Entity";
@@ -9,6 +10,8 @@ export const AnnotationTab = observer(({ store }) => {
   const annotation = as.selectedHistory ?? as.selected;
   const { selectionSize } = annotation || {};
   const hasSegmentation = store.hasSegmentation;
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -26,7 +29,7 @@ export const AnnotationTab = observer(({ store }) => {
         <Entity store={store} annotation={annotation} />
       ) : hasSegmentation ? (
         <p style={{ marginTop: 12, marginBottom: 0, paddingInline: 15 }}>
-          No Region selected
+          {t('No Region selected')}
         </p>
       ) : null}
 

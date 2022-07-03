@@ -1,0 +1,14 @@
+{
+    "locales": [
+        "en",
+        "zh-CN"
+    ],
+    "defaultNS": "translation",
+    "extraNamespaces": [
+        "AnnotationHistory",
+        "Entities",
+        "Relations",
+        "AnnotationTab",
+        "Topbar"
+    ]
+}

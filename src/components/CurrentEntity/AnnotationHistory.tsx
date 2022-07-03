@@ -21,6 +21,7 @@ import { Block, Elem } from "../../utils/bem";
 import { FF_DEV_2290, isFF } from "../../utils/feature-flags";
 import { userDisplayName } from "../../utils/utilities";
 import "./AnnotationHistory.styl";
+import { useTranslation } from "react-i18next";
 
 type HistoryItemType = (
   'prediction' |
@@ -187,22 +188,24 @@ const HistoryItemComponent: FC<{
 }) => {
   const isPrediction = entity?.type === 'prediction';
 
+  const { t } = useTranslation(['AnnotationHistory', 'translation']);
+
   const reason = useMemo(() => {
     switch(acceptedState) {
-      case "accepted": return "Accepted";
-      case "rejected": return "Rejected";
-      case "fixed_and_accepted": return "Fixed";
-      case "updated": return "Updated";
-      case "submitted": return "Submitted";
-      case 'prediction': return "From prediction";
-      case 'imported': return "Imported";
-      case 'skipped': return "Skipped";
-      case "draft_created": return "Draft";
-      case "deleted_review": return "Review deleted";
-      case "propagated_annotation": return "Propagated";
+      case "accepted": return t('Accepted');
+      case "rejected": return t('Rejected');
+      case "fixed_and_accepted": return t('Fixed');
+      case "updated": return t('Updated');
+      case "submitted": return t('Submitted');
+      case 'prediction': return t('From prediction');
+      case 'imported': return t('Imported');
+      case 'skipped': return t('Skipped');
+      case "draft_created": return t('Draft');
+      case "deleted_review": return t('Review deleted');
+      case "propagated_annotation": return t('Propagated');
       default: return null;
     }
-  }, []);
+  }, [t]);
 
   const handleClick = useCallback((e) => {
     if (disabled) return;
@@ -258,6 +261,8 @@ const HistoryComment: FC<{
   const [collapsible, setCollapsible] = useState(false);
   const commentRef = useRef();
 
+  const { t } = useTranslation(['AnnotationHistory', 'translation']);
+
   useLayoutEffect(() => {
     if (commentRef.current) {
       const { clientHeight } = commentRef.current;
@@ -284,7 +289,7 @@ const HistoryComment: FC<{
           e.stopPropagation();
           setCollapsed((v) => !v);
         }}>
-          {collapsed ? "Show more" : "Show less"}
+          {collapsed ? t("Show more") : t("Show less")}
         </Elem>
       )}
     </Elem>

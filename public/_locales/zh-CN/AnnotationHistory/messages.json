@@ -1,0 +1,41 @@
+{
+  "Accepted": {
+    "message": "已通过"
+  },
+  "Rejected": {
+    "message": "已拒绝"
+  },
+  "Fixed": {
+    "message": "已修复"
+  },
+  "Updated": {
+    "message": "已更新"
+  },
+  "Submitted": {
+    "message": "已提交"
+  },
+  "From prediction": {
+    "message": "来自预测"
+  },
+  "Imported": {
+    "message": "已导入"
+  },
+  "Skipped": {
+    "message": "已跳过"
+  },
+  "Draft": {
+    "message": "草稿"
+  },
+  "Review deleted": {
+    "message": "已删除 Review"
+  },
+  "Propagated": {
+    "message": "已冒泡"
+  },
+  "Show more": {
+    "message": "展示更多"
+  },
+  "Show less": {
+    "message": "收起"
+  }
+}

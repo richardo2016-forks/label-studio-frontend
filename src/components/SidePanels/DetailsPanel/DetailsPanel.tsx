@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { Elem } from "../../../utils/bem";
 import { AnnotationHistory } from "../../CurrentEntity/AnnotationHistory";
 import { PanelBase, PanelProps } from "../PanelBase";
@@ -40,11 +41,13 @@ const Content: FC<any> = observer(({
 const GeneralPanel: FC<any> = observer(({ currentEntity }) => {
   const { relationStore } = currentEntity;
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Elem name="section">
         <Elem name="section-head">
-          Annotation History
+          {t('Annotation History')}
           <span>#{currentEntity.pk ?? currentEntity.id}</span>
         </Elem>
         <Elem name="section-content">

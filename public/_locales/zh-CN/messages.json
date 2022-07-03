@@ -1,0 +1,14 @@
+{
+  "Annotation__History": {
+    "message": "标注历史"
+  },
+  "No__Region__selected": {
+    "message": "没有区域没选中"
+  },
+  "Delete__All__Regions": {
+    "message": "删除所有的选区"
+  },
+  "Rect": {
+    "message": "矩形"
+  }
+}

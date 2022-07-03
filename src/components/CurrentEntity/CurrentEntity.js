@@ -1,5 +1,6 @@
 import { inject, observer } from "mobx-react";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Space } from "../../common/Space/Space";
 import { Block, Elem } from "../../utils/bem";
 import { FF_DEV_2290, isFF } from "../../utils/feature-flags";
@@ -13,6 +14,7 @@ export const CurrentEntity = injector(observer(({
   entity,
   showHistory = true,
 }) => {
+  const { t } = useTranslation();
 
   useEffect(()=>{
     const copyToClipboard = (ev) => {
@@ -112,7 +114,7 @@ export const CurrentEntity = injector(observer(({
       {showHistory && (
         <>
           <Elem tag={Space} spread name="title">
-            Annotation History
+            {t('Annotation History')}
             <Elem name="id">#{entity.pk ?? entity.id}</Elem>
           </Elem>
           <AnnotationHistory/>

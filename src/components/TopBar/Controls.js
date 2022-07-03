@@ -9,6 +9,7 @@ import "./Controls.styl";
 import { useCallback, useMemo, useState } from "react";
 import { Dropdown } from "../../common/Dropdown/DropdownComponent";
 import { FF_DEV_1593, FF_DEV_2186, FF_DEV_2458, isFF } from "../../utils/feature-flags";
+import { useTranslation } from "react-i18next";
 
 const TOOLTIP_DELAY = 0.8;
 
@@ -80,6 +81,8 @@ export const Controls = controlsInjector(observer(({ store, history, annotation 
   const disabled = store.isSubmitting || historySelected;
   const submitDisabled = store.hasInterface("annotations:deny-empty") && results.length === 0;
 
+  const { t } = useTranslation(["Topbar"]);
+
   const RejectButton = useMemo(() => {
     if (isFF(FF_DEV_1593) && store.hasInterface("comments:reject")) {
       return (
@@ -133,14 +136,14 @@ export const Controls = controlsInjector(observer(({ store, history, annotation 
             onAction={store.skipTask}
             buttonProps={{ disabled, look: "danger" }}
             prompt="Reason of cancelling (skipping) task"
-            action="Skip"
+            action={t('Skip')}
           />,
         );
       } else {
         buttons.push(
           <ButtonTooltip key="skip" title="Cancel (skip) task: [ Ctrl+Space ]">
             <Button aria-label="skip-task" disabled={disabled} look="danger" onClick={store.skipTask}>
-              Skip
+              {t('Skip')}
             </Button>
           </ButtonTooltip>,
         );
@@ -177,14 +180,14 @@ export const Controls = controlsInjector(observer(({ store, history, annotation 
             onAction={store.updateAnnotation}
             buttonProps={{ disabled: disabled || submitDisabled, look: "primary" }}
             prompt="Comment to Reviewer"
-            action="Update"
+            action={t('Update')}
           />
         );
       } else {
         button = (
           <ButtonTooltip key="update" title="Update this task: [ Alt+Enter ]">
             <Button aria-label="submit" disabled={disabled || submitDisabled} look="primary" onClick={() => store.updateAnnotation()}>
-              {isUpdate ? "Update" : "Submit"}
+              {isUpdate ? t('Update') : t('Submit')}
             </Button>
           </ButtonTooltip>
         );

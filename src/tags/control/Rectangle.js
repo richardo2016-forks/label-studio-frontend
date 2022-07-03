@@ -1,4 +1,5 @@
 import { types } from "mobx-state-tree";
+import i18n from '../../i18n';
 
 import Registry from "../../core/Registry";
 import ControlBase from "./Base";
@@ -50,7 +51,7 @@ const Model = types
     type: "rectangle",
   })
   .volatile(() => ({
-    toolNames: isFF(FF_DEV_2132) ? ["Rect", "Rect3Point"] : ["Rect"],
+    toolNames: isFF(FF_DEV_2132) ? [i18n.t("Rect"), "Rect3Point"] : [i18n.t("Rect")],
   }));
 
 const RectangleModel = types.compose("RectangleModel",

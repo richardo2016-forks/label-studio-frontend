@@ -12,6 +12,7 @@ import globalStyles from "../../styles/global.module.scss";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { Block, Elem } from "../../utils/bem";
 import "./Relations.styl";
+import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
@@ -138,11 +139,13 @@ const RelationsComponent = ({ store }) => {
   const hasRelations = relations.length > 0;
   const relationsUIVisible = annotation.relationStore.showConnections;
 
+  const { t } = useTranslation(['Relations']);
+
   return (
     <Block name="relations">
       {/* override LS styles' height */}
       <Elem name="header">
-        <Elem name="title">Relations ({relations.length})</Elem>
+        <Elem name="title">{t('Relations')} ({relations.length})</Elem>
         {hasRelations && (
           <Button
             size="small"
@@ -165,7 +168,7 @@ const RelationsComponent = ({ store }) => {
             renderItem={item => <ListItem item={item} />}
           />
         ) : (
-          <p>No Relations added yet</p>
+          <p>{t('No Relations added yet')}</p>
         )}
       </Elem>
     </Block>

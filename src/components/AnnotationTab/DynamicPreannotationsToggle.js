@@ -1,5 +1,6 @@
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { IconCheck, IconCross } from "../../assets/icons";
 import { Button } from "../../common/Button/Button";
 import { Space } from "../../common/Space/Space";
@@ -31,6 +32,8 @@ export const DynamicPreannotationsToggle = injector(observer(({
     if (!enabled) store.setAutoAnnotation(false);
   }, [enabled]);
 
+  const { t } = useTranslation(['AnnotationTab']);
+
   return enabled ? (
     <Block name="dynamic-preannotations">
       <Elem name="wrapper">
@@ -46,7 +49,7 @@ export const DynamicPreannotationsToggle = injector(observer(({
                 ToolsManager.allInstances().forEach(inst => inst.selectDefault());
               }
             }}
-            label="Auto-Annotation"
+            label={t('Auto-Annotation')}
             style={{ color: "#7F64FF" }}
           />
           {suggestions.size > 0 && (

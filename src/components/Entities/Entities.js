@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { Dropdown } from "antd";
 import { observer } from "mobx-react";
 
@@ -29,6 +30,8 @@ export default observer(({
     regionStore.toggleVisibility();
   };
 
+  const { t } = useTranslation(['Entities', 'translation']);
+
   return (
     <Block name="entities">
       <Elem name="source">
@@ -41,16 +44,16 @@ export default observer(({
               regionStore.setView(e.target.value);
             }}
           >
-            <RadioGroup.Button value="regions">Regions{count ? <Elem name="counter">&nbsp;{count}</Elem> : null}</RadioGroup.Button>
-            <RadioGroup.Button value="labels">Labels</RadioGroup.Button>
+            <RadioGroup.Button value="regions">{t('Regions')}{count ? <Elem name="counter">&nbsp;{count}</Elem> : null}</RadioGroup.Button>
+            <RadioGroup.Button value="labels">{t('Labels')}</RadioGroup.Button>
           </RadioGroup>
 
           {annotation.editable && !annotation.readonly && (
-            <Tooltip title="Delete All Regions">
+            <Tooltip title={t('Delete All Regions')}>
               <Button
                 look="danger"
                 type="text"
-                aria-label="Delete All Regions"
+                aria-label={t('Delete All Regions')}
                 icon={<LsTrash />}
                 style={{
                   height: 36,
@@ -76,7 +79,10 @@ export default observer(({
             {regionStore.view === "regions" && (
               <Dropdown overlay={<SortMenu regionStore={regionStore} />} placement="bottomLeft">
                 <Elem name="sort" onClick={e => e.preventDefault()}>
-                  <Elem name="sort-icon"><SortMenuIcon sortKey={regionStore.sort} /></Elem> {`Sorted by ${regionStore.sort[0].toUpperCase()}${regionStore.sort.slice(1)}`}
+                  <Elem name="sort-icon"><SortMenuIcon sortKey={regionStore.sort} /></Elem>
+                  {t('sorted_by', {
+                    order: `${regionStore.sort[0].toUpperCase()}${regionStore.sort.slice(1)}`,
+                  })}
                 </Elem>
               </Dropdown>
             )}

@@ -1,6 +1,9 @@
 import { Menu } from "antd";
+import { useTranslation } from "react-i18next";
 
 export const GroupMenu = ({ regionStore }) => {
+  const { t } = useTranslation();
+
   return (
     <Menu selectedKeys={[regionStore.view]}>
       <Menu.Item key="regions">
@@ -12,7 +15,7 @@ export const GroupMenu = ({ regionStore }) => {
           }}
           style={{ width: "135px", display: "flex", justifyContent: "space-between" }}
         >
-          <div>Regions</div>
+          <div>{t('Regions')}</div>
         </div>
       </Menu.Item>
       <Menu.Item key="labels">
@@ -24,7 +27,7 @@ export const GroupMenu = ({ regionStore }) => {
           }}
           style={{ width: "135px", display: "flex", justifyContent: "space-between" }}
         >
-          <div>Labels</div>
+          <div>{t('Labels')}</div>
         </div>
       </Menu.Item>
     </Menu>
